@@ -1,0 +1,37 @@
+FROM node:18-alpine3.15 as development
+
+WORKDIR /usr/src/app
+
+COPY ./frontend/package.json ./
+
+RUN npm install -g vite
+RUN npm install -g typescript
+RUN yarn install
+
+ARG API_URL
+ENV VITE_API_URL=http://localhost:8080/api
+ENV VITE_OSRM_URL=http://localhost:5000
+EXPOSE 5173
+
+# build
+FROM node:18-alpine3.15 as build
+
+WORKDIR /usr/src/app
+
+COPY ./frontend ./
+COPY ./ssl/ ./etc/ssl
+
+RUN yarn install
+
+ARG API_URL
+ENV VITE_API_URL=${API_URL}
+ENV VITE_OSRM_URL=${OSRM_URL}
+RUN npx browserslist@latest --update-db
+RUN yarn run build
+
+# production environment
+FROM nginx:1.23.1-alpine
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html
+COPY --from=build /usr/src/app/etc/ssl ./etc/ssl
+EXPOSE 80 443
+CMD ["nginx", "-g", "daemon off;"]

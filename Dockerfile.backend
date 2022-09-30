@@ -1,0 +1,32 @@
+FROM python:3.9-slim AS development
+
+ENV POETRY_VERSION=1.1.14
+
+RUN apt-get update && apt-get install -y build-essential python-dev
+
+WORKDIR /usr/src/app
+COPY ./backend/pyproject.toml ./
+
+RUN pip install --upgrade pip
+RUN pip install poetry==${POETRY_VERSION}
+RUN poetry install
+RUN poetry export -f requirements.txt --without-hashes --output requirements.txt
+RUN pip install -r requirements.txt
+# RUN pip install -e .
+
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim
+
+ENV POETRY_VERSION=1.1.14
+
+COPY ./backend /usr/src/app
+COPY ./ssl /usr/src/app
+
+RUN apt-get update && apt-get install -y build-essential python-dev
+
+WORKDIR /usr/src/app
+
+RUN pip install --upgrade pip
+RUN pip install poetry==${POETRY_VERSION}
+RUN poetry export -f requirements.txt --without-hashes --output requirements.txt
+RUN pip install --no-cache -r requirements.txt
+RUN pip install -e .

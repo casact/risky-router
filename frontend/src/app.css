@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.leaflet-routing-container {
+  padding: 0.5rem !important;
+}
+
+.leaflet-routing-geocoder > input {
+  padding: 0.5rem !important;
+}
+
+.leaflet-routing-add-waypoint {
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+}
+
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+  z-index: 10000;
+}
+
+.tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position: absolute;
+
+  /* vertically center */
+  top: 0%;
+  transform: translateY(-100%);
+
+  /* move to right */
+  left: 100%;
+  margin-left: 15px; /* and add a small left margin */
+
+  /* basic styles */
+  width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #1d3461;
+  color: #fff;
+  text-align: center;
+
+  display: none; /* hide by default */
+}
+
+.tooltip.left:before {
+  /* reset defaults */
+  left: initial;
+  margin: initial;
+
+  /* set new values */
+  right: 0%;
+  margin-right: 15px;
+}
+
+.tooltip:hover:before {
+  display: block;
+  z-index: 10000;
+}

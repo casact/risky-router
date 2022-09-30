@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+    osrm:
+        container_name: osrm
+        image: osrm/osrm-backend
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: ./osrm
+              target: /opt/data
+        ports:
+            - '5000:5000'
+        command:
+            osrm-routed --algorithm mld data/washington-latest.osrm
+    backend:
+        container_name: backend
+        restart: unless-stopped
+        build:
+            context: .
+            dockerfile: Dockerfile.backend
+        volumes:
+            - backend_static_volume:/usr/src/app/static
+        ports:
+            - '8080:8080'
+        command: uvicorn main:app --host 0.0.0.0 --port 8080 #--ssl-keyfile=./cert.key --ssl-certfile=./cert.pem --ssl-cert-reqs=1 --ssl-ca-certs=./cloudflare.crt --reload
+    frontend:
+        container_name: frontend
+        restart: unless-stopped
+        build:
+            context: .
+            dockerfile: Dockerfile.frontend
+            args:
+                - API_URL=${API_URL}
+                - OSRM_URL=${OSRM_URL}
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./frontend/nginx:/etc/nginx/conf.d
+            - ./ssl:/etc/ssl
+        env_file:
+            - .env
+        depends_on:
+            - backend
+            - osrm
+
+volumes:
+    backend_static_volume:

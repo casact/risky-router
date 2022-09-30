@@ -1,0 +1,46 @@
+[weather.api]
+url = "https://api.open-meteo.com/v1/forecast"
+
+[weather.api.params]
+latitude = 47.50
+longitude = -122.25
+current_weather = "true"
+
+[encoding.weekday_of_data]
+0 = "MONDAY"
+1 = "TUESDAY"
+2 = "WEDNESDAY"
+3 = "THURSDAY"
+4 = "FRIDAY"
+5 = "SATURDAY"
+6 = "SUNDAY"
+
+[encoding.weather]
+0 = "CLEAR"
+1 = "CLEAR"
+2 = "CLEAR"
+3 = "OVERCAST"
+45 = "OVERCAST"
+48 = "OVERCAST"
+51 = "RAIN"
+53 = "RAIN"
+55 = "RAIN"
+56 = "RAIN"
+57 = "RAIN"
+61 = "RAIN"
+63 = "RAIN"
+65 = "RAIN"
+66 = "RAIN"
+67 = "RAIN"
+71 = "SNOW"
+73 = "SNOW"
+75 = "SNOW"
+77 = "SNOW"
+80 = "RAIN"
+81 = "RAIN"
+82 = "RAIN"
+85 = "SNOW"
+86 = "SNOW"
+95 = "RAIN"
+96 = "RAIN"
+99 = "RAIN"

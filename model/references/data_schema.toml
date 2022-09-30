@@ -1,0 +1,160 @@
+[seattle.streets.columns]
+OBJECTID = "ObjectId"
+ARTCLASS = "ArterialCode"
+SPEEDLIMIT = "SpeedLimitMPH"
+SEGLENGTH = "Length"
+
+[seattle.streets.arterial_code]
+NOT_DESIGNATED = 0
+PRINCIPAL_ARTERIAL = 1
+MINOR_ARTERIAL = 2
+COLLECTOR_ARTERIAL = 3
+STATE_HIGHWAY = 4
+INTERSTATE_FREEWAY = 5
+
+[seattle.intersections.columns]
+INTR_ID = "IntersectionId"
+SHAPE_LNG = "Longitude"
+SHAPE_LAT = "Latitude"
+
+[seattle.volume.weekday_of_data]
+MONDAY = 0
+TUESDAY = 1
+WEDNESDAY = 2
+THURSDAY = 3
+FRIDAY = 4
+SATURDAY = 5
+SUNDAY = 6
+
+[seattle.weather.columns]
+time = "Time"
+rain = "Rainfall"
+snowfall = "Snowfall"
+cloudcover = "Cloudcover"
+cloudcover_low = "CloudcoverLow"
+relativehumidity_2m = "RelativeHumidity"
+
+[seattle.weather.weekday_of_data]
+MONDAY = 0
+TUESDAY = 1
+WEDNESDAY = 2
+THURSDAY = 3
+FRIDAY = 4
+SATURDAY = 5
+SUNDAY = 6
+
+[seattle.collisions.columns]
+OBJECTID = "ObjectId"
+INCKEY = "IncidentId"
+COLDETKEY = "CollisionId"
+FATALITIES = "NumFatalities"
+INCDTTM = "Time"
+INJURIES = "NumInjuries"
+INTKEY = "IntersectionId"
+LIGHTCOND = "LightCondition"
+PEDCOUNT = "NumPedestrians"
+PEDCYLCOUNT = "NumCyclists"
+PERSONCOUNT = "NumPersons"
+SERIOUSINJURIES = "NumSeriousInjuries"
+SEVERITYCODE = "SeverityCode"
+STATUS = "MatchingStatus"
+VEHCOUNT = "NumVehicles"
+WEATHER = "Weather"
+LONGITUDE = "Longitude"
+LATITUDE = "Latitude"
+
+[seattle.collisions.weekday_of_data]
+MONDAY = 0
+TUESDAY = 1
+WEDNESDAY = 2
+THURSDAY = 3
+FRIDAY = 4
+SATURDAY = 5
+SUNDAY = 6
+
+[seattle.collisions.severity_code]
+UNKNONW = "0"
+PROPERTY_DAMAGE = "1"
+INJURY = "2"
+SERIOUS_INJURY = "2b"
+FATALITY = 3
+
+[crss.accident.columns]
+CASENUM = "CaseId"
+HOUR_IM = "HourofData"
+WEATHR_IM = "Weather"
+
+[crss.vehicle.columns]
+CASENUM = "CaseId"
+VEH_NO = "VehicleId"
+MDLYR_IM = "VehicleYear"
+BDYTYP_IM = "BodyType"
+TRAV_SP = "Speed"
+VSPD_LIM = "SpeedLimit"
+MXVSEV_IM = "MaximumSeverity"
+V_ALCH_IM = "Alcohol"
+
+[crss.person.columns]
+CASENUM = "CaseId"
+AGE_IM = "AgeofDriver"
+PER_TYP = "PersonType"
+
+[crss.distract.columns]
+CASENUM = "CaseId"
+MDRDSTRD = "Distraction"
+DRDISTRACT = "Distraction"
+
+[crss.accident.weather]
+CLEAR = 1
+RAIN = 2
+SLEET_HAIL = 3
+SNOW = 4
+FOG = 5
+SEVERE_CROSSWINDS = 6
+BLOWING_SAND_SOIL_DIRT = 7
+OTHER = 8
+CLOUDY = 10
+BLOWING_SNOW = 11
+FREEZING_RAIN = 12
+NOT_REPORTED = 98
+UNKNOWN = 99
+
+[crss.vehicle.maximum_severity]
+NO_INJURY = 0
+POSSIBLE_INJURY = 1
+MINOR_INJURY = 2
+SERIOUS_INJURY = 3
+FATAL = 4
+INJURED_UNKNOWN_SEVERITY = 5
+DIED_PRIOR = 6
+NO_OCCUPANTS = 8
+UNKNOWN = 9
+
+[crss.vehicle.alcohol]
+ALCOHOL_INVOLVED = 1
+NO_ALCOHOL_INVOLVED = 2
+
+[crss.distract.distraction]
+NOT_DISTRACTED = 0
+LOOKED_BUT_DID_NOT_SEE = 1
+BY_OTHER_OCCUPANTS = 3
+BY_A_MOVING_OBJECT_IN_VEHICLE = 4
+WHILE_TALKING_OR_LISTENING_PHONE = 5
+WHILE_MANIPULATING_PHONE = 6
+WHILE_ADJUSTING_AUDIO_CLIMATE = 7
+WHILE_ADJUSTING_OTHER = 9
+WHILE_USING_REACHING_DEVICE = 10
+OUTSIDE_PERSON_OBJECT = 12
+EATING_DRINKING = 13
+SMOKING = 14
+OTHER_MOBILE_PHONE = 15
+NO_DRIVER = 16
+INATTENTION = 17
+CARELESS = 18
+INATTENTIVE = 19
+DISTRACTED_UNKNOWN = 92
+INATTENTIVE_UNKNOWN = 93
+NOT_REPORTED = 96
+DAY_DREAMING = 97
+OTHER = 98
+UNKNOWN = 99

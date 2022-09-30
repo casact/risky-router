@@ -1,0 +1,50 @@
+start_date = 2021-09-01 # Inclusive
+end_date = 2022-08-31   # Inclusive
+
+[data.hour_bins]
+EARLY_MORNING = [0, 6]
+MORNING_RUSH = [6, 9]
+MORNING_QUIET = [9, 12]
+MIDDAY_BREAK = [12, 15]
+EVENING_RUSH = [15, 19]
+NIGHT = [19, 24]
+
+[data.vehicle_year_bins]
+PRE_2000 = [1900, 2000]
+2000_TO_2010 = [2000, 2010]
+2010_TO_CURRENT = [2010, 2030]
+
+[data.age_bins]
+16_TO_21 = [16, 21]
+21_TO_25 = [21, 25]
+25_TO_30 = [25, 30]
+30_TO_45 = [30, 45]
+45_TO_65 = [45, 65]
+65_PLUS = [65, 120]
+
+[data.speeding_bins]
+BELOW_SPEED_LIMIT = [0, 0.9]
+WITHIN_SPEED_LIMIT = [0.9, 1.1]
+SPEEDING = [1.1, 1.2]
+EXCESSIVE_SPEEDING = [1.2, 10]
+
+[weather.api]
+url = "https://archive-api.open-meteo.com/v1/era5"
+
+[weather.api.params]
+latitude = 47.50
+longitude = -122.25
+start_date = 2021-09-01
+end_date = 2022-08-31
+hourly = ["rain", "snowfall", "cloudcover"]
+
+[weather.classification]
+# Classify weather based on recorded metrics
+# Order of precedence if multiple classes:
+# CLEAR < OVERCAST < FOG < RAIN < SNOW
+rainfall = 1.5    # Considered moderate raining if mm >= this number
+snowfall = 1.5    # Considered snowfall if mm >= this number
+cloudcover = 0.95 # Considered overcast if % >= this number
+
+[gbm]
+min_volume = 60
